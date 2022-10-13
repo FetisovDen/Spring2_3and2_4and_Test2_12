@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pro.sky.Spring__2_3__and__2_4__and__2_12_Test.Calculator2_3.Exception.NoZeroException;
 
 @RestController
 @RequestMapping("/calculator")
@@ -29,8 +30,7 @@ public class CalculatorController {
         return  num1 + "*" + num2 +"=" + calculatorService.multiply(num1, num2);
     }
     @GetMapping(path = "/divide")
-    public String divide(@RequestParam("num1")int num1, @RequestParam("num2") int num2){
-        if  (num2 == 0)  return "На ноль делить нельзя";
+    public String divide(@RequestParam("num1")int num1, @RequestParam("num2") int num2) throws NoZeroException {
         return   num1 + "/" + num2 +"=" + calculatorService.divide(num1, num2);
     }
 
